@@ -47,12 +47,12 @@ namespace morsecodeconverter
 
                 foreach (var ch in userInput)
                 {
-                    Console.Write(morseCodeDictionary[ch]);
+                    Console.WriteLine(morseCodeDictionary[ch]);
                 }
 
                 Console.WriteLine("Still translating? [Y] [N]");
                 var input = Console.ReadLine();
-                if (input.ToLower() == "Y" )
+                if (input.ToLower() == "Y")
                 {
                     stillTranslating = true;
                 }
@@ -60,8 +60,11 @@ namespace morsecodeconverter
                 {
                     stillTranslating = false;
                 }
+                else
+                {
+                    Console.WriteLine("Type [Y] or [N]...follow directions");
+                }
 
-                Console.ReadLine();
             }
         }
     }
