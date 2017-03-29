@@ -30,10 +30,7 @@ namespace morsecodeconverter
                         var text = reader.ReadLine().Split(',');
                         morseCodeDictionary.Add(char.Parse(text[0]), text[1]);
                     }
-
                 }
-
-               
 
                 foreach (var ch in userInput)
                 {
@@ -42,9 +39,9 @@ namespace morsecodeconverter
                     Console.WriteLine(temp);
                 }
 
-                using (var writer = new StreamWriter(userInputPath))
+                using (StreamWriter w = File.AppendText("userInput.csv"))
                 {
-                    writer.WriteLine($"{userInput},{userMorse}");
+                    w.WriteLine($"{userInput},{userMorse}");
                 }
 
                 Console.WriteLine("Still translating? [Y] [N]");
