@@ -50,6 +50,16 @@ namespace morsecodeconverter
                     Console.Write(morseCodeDictionary[ch]);
                 }
 
+                Console.WriteLine("Still translating? [Y] [N]");
+                var input = Console.ReadLine();
+                if (input.ToLower() == "Y" )
+                {
+                    stillTranslating = true;
+                }
+                else if (input.ToLower() == "N")
+                {
+                    stillTranslating = false;
+                }
 
                 Console.ReadLine();
             }
