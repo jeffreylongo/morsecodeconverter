@@ -35,10 +35,9 @@ namespace morsecodeconverter
 
                 using (var writer = new StreamWriter(userInputPath))
                 {
-                    foreach (var ch in userInput)
-                    {
+                   
                         writer.WriteLine($"{userInput},{userMorse}");
-                    }
+                    
 
                 }
 
