@@ -29,6 +29,17 @@ namespace morsecodeconverter
 
             }
 
+            using (var writer = new StreamWriter(userInputPath))
+            {
+                foreach (var ch in userInput)
+                {
+                    writer.Write(ch);
+                    writer.Write(morseCodeDictionary[ch]);
+                }
+
+            }
+
+
 
             foreach (var ch in userInput)
             {
