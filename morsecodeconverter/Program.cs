@@ -21,7 +21,7 @@ namespace morsecodeconverter
                 var morseCodePath = "morse.csv";
                 var userInput = Console.ReadLine().ToUpper();
                 Dictionary<char, string> morseCodeDictionary = new Dictionary<char, string>();
-
+                var userMorse = "";
                 using (var reader = new StreamReader(morseCodePath))
                 {
 
@@ -37,26 +37,26 @@ namespace morsecodeconverter
                 {
                     foreach (var ch in userInput)
                     {
-                        writer.Write(ch);
-                        writer.WriteLine(morseCodeDictionary[ch]);
+                        writer.WriteLine($"{userInput},{userMorse}");
                     }
 
                 }
 
-
-
                 foreach (var ch in userInput)
                 {
-                    Console.WriteLine(morseCodeDictionary[ch]);
+                    var temp = morseCodeDictionary[ch];
+                    userMorse += temp;
+                    Console.WriteLine(temp);
                 }
+                
 
                 Console.WriteLine("Still translating? [Y] [N]");
                 var input = Console.ReadLine();
-                if (input.ToLower() == "Y")
+                if (input.ToLower() == "y")
                 {
                     stillTranslating = true;
                 }
-                else if (input.ToLower() == "N")
+                else if (input.ToLower() == "n")
                 {
                     stillTranslating = false;
                 }
