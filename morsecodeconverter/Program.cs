@@ -33,13 +33,7 @@ namespace morsecodeconverter
 
                 }
 
-                using (var writer = new StreamWriter(userInputPath))
-                {
-                   
-                        writer.WriteLine($"{userInput},{userMorse}");
-                    
-
-                }
+               
 
                 foreach (var ch in userInput)
                 {
@@ -47,7 +41,11 @@ namespace morsecodeconverter
                     userMorse += temp;
                     Console.WriteLine(temp);
                 }
-                
+
+                using (var writer = new StreamWriter(userInputPath))
+                {
+                    writer.WriteLine($"{userInput},{userMorse}");
+                }
 
                 Console.WriteLine("Still translating? [Y] [N]");
                 var input = Console.ReadLine();
