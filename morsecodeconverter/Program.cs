@@ -11,8 +11,10 @@ namespace morsecodeconverter
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Enter a word and I will morsify it: ");
+
             var morseCodePath = "morse.csv";
-            var userInput = Convert.ToChar(Console.ReadLine());
+            var userInput = Console.ReadLine().ToUpper();
             Dictionary<char, string> morseCodeDictionary = new Dictionary<char, string>();
 
             using (var reader = new StreamReader(morseCodePath))
@@ -23,9 +25,14 @@ namespace morsecodeconverter
                    var text = reader.ReadLine().Split(',');
                     morseCodeDictionary.Add(char.Parse(text[0]), text[1]);
                 }
+
             }
 
-            Console.WriteLine("Enter a string of words and I will morsify it: ");
+
+            foreach (var ch in userInput)
+            {
+                Console.WriteLine(morseCodeDictionary[ch]);
+            }
             
 
             Console.ReadLine();
