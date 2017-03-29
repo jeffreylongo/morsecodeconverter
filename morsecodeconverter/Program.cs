@@ -13,6 +13,7 @@ namespace morsecodeconverter
         {
             Console.WriteLine("Enter a word and I will morsify it: ");
 
+            var userInputPath = "userInput.csv";
             var morseCodePath = "morse.csv";
             var userInput = Console.ReadLine().ToUpper();
             Dictionary<char, string> morseCodeDictionary = new Dictionary<char, string>();
