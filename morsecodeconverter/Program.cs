@@ -11,43 +11,48 @@ namespace morsecodeconverter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter a word and I will morsify it: ");
-
-            var userInputPath = "userInput.csv";
-            var morseCodePath = "morse.csv";
-            var userInput = Console.ReadLine().ToUpper();
-            Dictionary<char, string> morseCodeDictionary = new Dictionary<char, string>();
-
-            using (var reader = new StreamReader(morseCodePath))
+            bool stillTranslating = true;
+            while (stillTranslating)
             {
-                
-                while (reader.Peek() >= 0)
+
+                Console.WriteLine("Enter a word and I will morsify it: ");
+
+                var userInputPath = "userInput.csv";
+                var morseCodePath = "morse.csv";
+                var userInput = Console.ReadLine().ToUpper();
+                Dictionary<char, string> morseCodeDictionary = new Dictionary<char, string>();
+
+                using (var reader = new StreamReader(morseCodePath))
                 {
-                   var text = reader.ReadLine().Split(',');
-                    morseCodeDictionary.Add(char.Parse(text[0]), text[1]);
+
+                    while (reader.Peek() >= 0)
+                    {
+                        var text = reader.ReadLine().Split(',');
+                        morseCodeDictionary.Add(char.Parse(text[0]), text[1]);
+                    }
+
                 }
 
-            }
+                using (var writer = new StreamWriter(userInputPath))
+                {
+                    foreach (var ch in userInput)
+                    {
+                        writer.Write(ch);
+                        writer.WriteLine(morseCodeDictionary[ch]);
+                    }
 
-            using (var writer = new StreamWriter(userInputPath))
-            {
+                }
+
+
+
                 foreach (var ch in userInput)
                 {
-                    writer.Write(ch);
-                    writer.Write(morseCodeDictionary[ch]);
+                    Console.Write(morseCodeDictionary[ch]);
                 }
 
+
+                Console.ReadLine();
             }
-
-
-
-            foreach (var ch in userInput)
-            {
-                Console.WriteLine(morseCodeDictionary[ch]);
-            }
-            
-
-            Console.ReadLine();
         }
     }
 }
