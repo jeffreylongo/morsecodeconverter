@@ -39,7 +39,7 @@ namespace morsecodeconverter
                     Console.WriteLine(temp);
                 }
 
-                using (StreamWriter w = File.AppendText("userInput.csv"))
+                using (StreamWriter w = File.AppendText(userInputPath))
                 {
                     w.WriteLine($"{userInput},{userMorse}");
                 }
